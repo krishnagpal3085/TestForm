@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href=".\images\logo.png">
+    <link rel="stylesheet" href="style.css">
+    <title> ADMISSION FORM </title>
+
+</head>
+<body>
+  <div id="main"> 
+    <img src=".\images\rainbow-8221835_1280.jpg" id="backgroundImage">
+    <div id="form">
+      <div id="sec1">
+    <img src="./images/logo.png" id="logo">
+   <h1 id="title">Welcome to NITC</h1>
+   </div>
+   <p>ADMISSION FORM </p>
+   <form name="submit-to-google-sheet" >
+    <div class="partition">
+    <div class="sec">
+    <label for="Name"  class="label">Full Name: </label><br/>
+    <input type="text" name="Name" class="input" required>
+</div>
+
+<div class="sec">
+  <label for="fathers/husbandsName"  class="label">fathers/Housbands name:  </label><br/>
+  <input type="text" name="fathers/husbandsName" class="input" required>
+</div>
+
+
+<div class="sec">
+    <label for="Mobile_No"  class="label">Phone.No: </label><br/>
+    <input type="tel" name="Mobile_No" class="input" required>
+    </div>
+    <div class="sec">
+      <label for="Email_Id"  class="label">Email Id: </label><br/>
+      <input type="email" name="Email_Id" class="input">
+      </div>
+      <div class="sec">
+        <label for="Address"  class="label">Address </label><br/>
+        <input type="text" name="Address" class="input" required>
+    </div></div>
+    <div class="partition" >
+      <div class="sec">
+        <label for="Photo"  class="label">Smile</label><br/>
+        <input type="file" name="photo"  accept="image/*" class="photo" capture="user" required>
+    </div>
+    <div class="sec">
+      <label for="Qualification"  class="label">Qualification: </label><br/>
+      <input type="text" name="Qualification" class="input" required>
+  </div>
+    <div class="sec">
+    <label for="Course"  class="label">Course: </label><br/>
+    <input type="text" name="Course" class="input" required>
+</div>
+<div class="sec">
+    <label for="DateofJoining"  class="label">Date of Joining</label><br/>
+    <input type="date" name="DateofJoining" class="input" required>
+</div>
+<div class="sec">
+  <label for="AdharNo"  class="label">Adhar card no: </label><br/>
+  <input type="text" name="AdharNo" class="input" required>
+</div>
+
+
+    <button id="submit">Submit</button>
+    <label id="display">Thanks for submiting 🙏</label>
+  </div>
+   </form>
+  </div></div>
+  <script>
+    
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzxkIoXVaAVFXVkNwKqF8t1Vm0d91E0G7VyfQmLbutmniabTmCrlUk-8oshwhdcYvuD/exec'
+  const form = document.forms['submit-to-google-sheet']
+const label = document.getElementById("display")
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+
+      label.style.display ='block'
+  })
+
+  </script>
+</body>
+</html>
